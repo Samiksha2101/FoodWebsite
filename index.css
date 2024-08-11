@@ -46,12 +46,18 @@
   width: 200px;
   margin: 10px;
   text-align: center;
+  /* text-decoration: none; */
+}
+.rest-container > a {
+  text-decoration: none;
+  color: rgb(78, 75, 54);
 }
 .rest-card:hover {
   /* height: 297px; */
   /* width: 197px; */
   /* border: 1px solid black; */
   background-color: rgb(255, 234, 209);
+  color: black;
 }
 .rest-container {
   display: flex;
