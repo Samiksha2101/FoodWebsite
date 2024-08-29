@@ -88,3 +88,28 @@
   display: flex;
   justify-content: center;
 }
+.user-card {
+  /* display: list-item; */
+  margin-top: 50px;
+  text-align: center;
+  border: 1px solid orange;
+}
+.rest-menu-pg {
+  /* text-align: center; */
+  width: 40%;
+  margin: auto;
+  border: 1px solid orange;
+}
+.restMenu-img {
+  /* height: 10%; */
+  width: 40%;
+  margin: 0 30%;
+  margin-top: 10px;
+}
+.rest-menu-pg > ul {
+  padding: 0 20%;
+}
+.rest-menu-pg > h2,
+h3 {
+  text-align: center;
+}

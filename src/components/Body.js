@@ -3,6 +3,7 @@ import RestaurentCard from "./RestaurentCard.js";
 import { FETCHDATA } from "../utils/constants.js";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -13,7 +14,7 @@ const Body = () => {
     fetchData();
   }, []);
 
-  console.log("rendered");
+  console.log("body rendered");
 
   const fetchData = async () => {
     const data = await fetch(FETCHDATA);
@@ -26,7 +27,16 @@ const Body = () => {
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    console.log("fetch called");
   };
+
+  if (useOnlineStatus() === false) {
+    return (
+      <h1>
+        Oops looks like you are offline, please check your network connectivity
+      </h1>
+    );
+  }
 
   if (restaurants.length === 0) {
     return (
