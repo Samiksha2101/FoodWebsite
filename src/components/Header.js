@@ -6,22 +6,22 @@ const Header = () => {
   const [clicked, setClicked] = useState("Log In");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
-      {console.log("header rendered")}
+    <div className="flex justify-between bg-orange-300 shadow-lg mb-2">
+      {/* {console.log("header rendered")} */}
       <div className="logo-container">
-        <img className="logo" src={LOGO} alt="logo"></img>
+        <img className="w-24" src={LOGO} alt="logo"></img>
       </div>
-      <div className="nav-items">
-        <ul className="list">
-          <li>Online Status {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-3">Online Status {onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="px-3">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-3">
             <Link to="/about">About Us</Link>
           </li>
-          <li>Cart</li>
-          <li>
+          <li className="px-3">Cart</li>
+          <li className="px-3">
             <Link to="/contact">Contact Us</Link>
           </li>
           <button

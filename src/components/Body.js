@@ -47,11 +47,11 @@ const Body = () => {
   }
   return (
     <div className="body">
-      <div className="search-bar">
-        <div className="search-rest">
+      <div className="search-bar flex justify-center">
+        <div className="search-rest m-4 p-4">
           <input
             type="text"
-            className="rest-input"
+            className="border border-solid border-black"
             value={searchRestaurants}
             onChange={(e) => {
               setSearchRestaurants(e.target.value);
@@ -60,6 +60,7 @@ const Body = () => {
 
           {/* {console.log(searchRestaurants)} */}
           <button
+            className="m-4 bg-orange-100 px-4 py-2 rounded-lg"
             onClick={() => {
               const filtered = restaurants.filter((res) =>
                 res.info.name
@@ -72,10 +73,10 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="search">
+        <div className="search flex items-center">
           <h2>Top Restaurents, Click here to see</h2>
           <button
-            className="search-btn"
+            className="search-btn m-4 bg-orange-100 px-4 py-2 rounded-lg"
             onClick={() => {
               const filteredList = restaurants.filter(
                 (x) => x.info.avgRating > 4.3
@@ -87,7 +88,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="rest-container">
+      <div className="rest-container flex flex-wrap justify-center">
         {filterRest.map((restObj) => (
           <Link key={restObj.info.id} to={"restaurants/" + restObj.info.id}>
             <RestaurentCard restData={restObj}></RestaurentCard>
