@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurentCard from "./RestaurentCard.js";
+import RestaurentCard, { withPromoted } from "./RestaurentCard.js";
 import { FETCHDATA } from "../utils/constants.js";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
@@ -9,6 +9,9 @@ const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchRestaurants, setSearchRestaurants] = useState("");
   const [filterRest, setFilterRest] = useState([]);
+
+  const promoted = false;
+  const RestaurantPromoted = withPromoted(RestaurentCard);
 
   useEffect(() => {
     fetchData();
@@ -27,7 +30,11 @@ const Body = () => {
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    console.log("fetch called");
+    // console.log(
+    //   "fetch called",
+    //   jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+    //     ?.restaurants
+    // );
   };
 
   if (useOnlineStatus() === false) {
@@ -91,7 +98,11 @@ const Body = () => {
       <div className="rest-container flex flex-wrap justify-center">
         {filterRest.map((restObj) => (
           <Link key={restObj.info.id} to={"restaurants/" + restObj.info.id}>
-            <RestaurentCard restData={restObj}></RestaurentCard>
+            {promoted ? (
+              <RestaurantPromoted restData={restObj}></RestaurantPromoted>
+            ) : (
+              <RestaurentCard restData={restObj}></RestaurentCard>
+            )}
           </Link>
         ))}
       </div>

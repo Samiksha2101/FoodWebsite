@@ -19,4 +19,17 @@ const RestaurentCard = (props) => {
     </div>
   );
 };
+
+// higher order component
+export const withPromoted = (RestaurentCard) => {
+  return (props) => {
+    return () => (
+      <div>
+        <label>Promoted</label>
+        <RestaurentCard {...props}></RestaurentCard>
+      </div>
+    );
+  };
+};
+
 export default RestaurentCard;
