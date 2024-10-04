@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import RestaurentCard, { withPromoted } from "./RestaurentCard.js";
 import { FETCHDATA } from "../utils/constants.js";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
-
+import UserContext from "../utils/UserContext.js";
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchRestaurants, setSearchRestaurants] = useState("");
@@ -13,6 +13,7 @@ const Body = () => {
   const promoted = false;
   const RestaurantPromoted = withPromoted(RestaurentCard);
 
+  const { loggedInUser, setUsername } = useContext(UserContext);
   useEffect(() => {
     fetchData();
   }, []);
@@ -93,6 +94,15 @@ const Body = () => {
           >
             Search
           </button>
+        </div>
+        <div className="m-4 flex justify-center items-center">
+          <label className="p-2">User Name:</label>
+          <input
+            type="text"
+            value={loggedInUser}
+            onChange={(e) => setUsername(e.target.value)}
+            className="border border-black p-2"
+          />
         </div>
       </div>
       <div className="rest-container flex flex-wrap justify-center">

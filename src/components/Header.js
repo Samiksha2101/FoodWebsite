@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Header = () => {
   const [clicked, setClicked] = useState("Log In");
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
+
+  // console.log(loggedInUser);
   return (
     <div className="flex justify-between bg-orange-300 shadow-lg mb-2">
       {/* {console.log("header rendered")} */}
@@ -24,8 +28,11 @@ const Header = () => {
           <li className="px-3">
             <Link to="/contact">Contact Us</Link>
           </li>
+          <li className="px-3">
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <button
-            className="login-btn"
+            className="login-btn bg-gray-50 rounded-lg px-3"
             onClick={() =>
               clicked === "Log In"
                 ? setClicked("Log Out")
@@ -34,6 +41,7 @@ const Header = () => {
           >
             {clicked}
           </button>
+          <li className="px-3 font-bold">Logged In : {loggedInUser}</li>
         </ul>
       </div>
     </div>

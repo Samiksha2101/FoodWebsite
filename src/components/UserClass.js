@@ -16,7 +16,7 @@ class UserClass extends Component {
     // console.log("child componentDidMount call");
     const userInfo = await fetch("https://api.github.com/users/samiksha2101");
     const json = await userInfo.json();
-    console.log(json);
+    // console.log(json);
     this.setState({ userInfo: json });
   }
 
