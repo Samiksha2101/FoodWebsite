@@ -9,7 +9,7 @@ class About extends Component {
 
   render() {
     return (
-      <div>
+      <div className="text-center">
         {/* <h1>This is About Us</h1> */}
         <div>
           Logged in User :

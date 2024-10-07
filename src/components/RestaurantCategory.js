@@ -20,7 +20,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex, index }) => {
         <span className="font-bold ">
           {data.title}({data.itemCards.length})
         </span>
-        <span>🔽</span>
+        {showItems ? <span>🔼</span> : <span>🔽</span>}
       </div>
       {/* {accordian body} */}
       {showItems && <ItemList items={data.itemCards}></ItemList>}

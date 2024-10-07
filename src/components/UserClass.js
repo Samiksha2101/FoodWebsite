@@ -32,7 +32,7 @@ class UserClass extends Component {
     const { name, location } = this.state.userInfo;
     return (
       <div className="user-card">
-        <h2>Name:{name}</h2>
+        {/* <h2>Name:{name}</h2> */}
         <h2>Location:{location}</h2>
       </div>
     );
