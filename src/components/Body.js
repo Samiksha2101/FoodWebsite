@@ -10,7 +10,7 @@ const Body = () => {
   const [searchRestaurants, setSearchRestaurants] = useState("");
   const [filterRest, setFilterRest] = useState([]);
 
-  const promoted = false;
+  // const promoted = false;
   const RestaurantPromoted = withPromoted(RestaurentCard);
 
   const { loggedInUser, setUsername } = useContext(UserContext);
@@ -106,9 +106,9 @@ const Body = () => {
         </div>
       </div>
       <div className="rest-container flex flex-wrap justify-center">
-        {filterRest.map((restObj) => (
+        {filterRest.map((restObj, index) => (
           <Link key={restObj.info.id} to={"restaurants/" + restObj.info.id}>
-            {promoted ? (
+            {index === 0 ? (
               <RestaurantPromoted restData={restObj}></RestaurantPromoted>
             ) : (
               <RestaurentCard restData={restObj}></RestaurentCard>
